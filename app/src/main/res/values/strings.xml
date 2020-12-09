@@ -2,5 +2,6 @@
     <string name="app_name">Architecture</string>
     <string name="first_activity">First Activity</string>
     <string name="press_here">Press here</string>
-    <string name="continue_activity">Continue Activity</string>string>
+    <string name="continue_activity">Continue Activity</string>
+    <string name="continue_press_button">Continue press button</string>string>
 </resources>
