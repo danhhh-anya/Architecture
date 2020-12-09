@@ -11,7 +11,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third);
+        setContentView(R.layout.activity_second);
         btnContinue = findViewById(R.id.btnContinue);
         btnContinue.setOnClickListener(view ->{
             Intent intent= new Intent(this,ThirdActivity.class);
