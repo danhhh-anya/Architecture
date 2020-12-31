@@ -8,21 +8,24 @@ import android.os.Handler;
 
 public class SplashActivity extends AppCompatActivity {
 
+    public static  final int DELAY_IN_MILLIS = 5000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
 
-      new Handler().postDelayed(new Runnable() {
+/*      new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent= new Intent (SplashActivity.this, MainActivity.class );
                 startActivity(intent);
             }
-        }, 2000);
-/*        new Handler().postDelayed(() -> {
+        }, DELAY_IN_MILLIS);*/
+        new Handler().postDelayed(() -> {
                 startActivity (new Intent (SplashActivity.this, MainActivity.class));
-        }, 2000);*/
+            finish();
+        }, DELAY_IN_MILLIS);
     }
 }
