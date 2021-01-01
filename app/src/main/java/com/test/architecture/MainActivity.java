@@ -38,12 +38,16 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private boolean checkLogin(String login) {
+    private boolean checkLogin (String login) {
+        return login.equals(Utils.login);
+    }
+
+            /*(String login) {
         for(int i = 0; i<Utils.logins.length; i++){
             if (Utils.logins[i].equals(login)) return true;
         }
         return false;
-    }
+    }*/
 
 
     private boolean checkPassword (String password) {
