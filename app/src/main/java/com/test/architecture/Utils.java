@@ -1,6 +1,6 @@
 package com.test.architecture;
 
 public class Utils {
-    public static String login = "login1";
-    public static String password = "pass";
+    public static String login = "someone";
+    public static String password = "FlX150900";
 }
