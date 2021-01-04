@@ -1,20 +1,22 @@
 package com.test.architecture;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static com.test.architecture.Utils.password;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     Button btnLogin;
     EditText etLogin;
     EditText etPassword;
-
+    ArrayList<UserModel> users;
+    HashMap<String, UserModel> userTypes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +25,25 @@ public class MainActivity extends AppCompatActivity {
         etLogin = findViewById(R.id.etLogin);
         etPassword = findViewById(R.id.etPassword);
 
+        userTypes.put("ENGINEER", users.get(2));
+        UserModel userEngineer = userTypes.get("ENGINEER");
+
+        users = new Utils().getUsers();
+
         btnLogin.setOnClickListener(view -> {
-            if (checkLogin(etLogin.getText().toString()) && checkNumbers(etPassword.getText().toString()) && checkCapitalLetters(etPassword.getText().toString()) && checkPasswordLength (etPassword.getText().toString()) ) {
+            if (checkLogin(etLogin.getText().toString(), etPassword.getText().toString())  ) {
+                startActivity();
+            } else {
+                    Toast.makeText(this, "The password or login are wrong", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+
+
+
+     /*  btnLogin.setOnClickListener(view -> {
+            if (checkLogin(etLogin.getText().toString(), etPassword.getText().toString())  ) {
 
                 if (isPasswordInvalid(etPassword.getText().toString())) {
                     startActivity();
@@ -35,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        
+      arrayList = new ArrayList<String>();
+        arrayList.add(arrayList.size()/2, "1/2");
+        */
+
+
     }
 
 
@@ -45,20 +68,33 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private boolean checkLogin(String login) {
-        return login.equals(Utils.login);
+    private boolean checkLogin(String login, String password) {
+       // return login.equals(Utils.login);
+        for (UserModel userModel: Utils.users){
+            if (userModel.getLogin().equals(login) && userModel.getPassword().equals(password)) return true;
+        }
+        return false;
     }
+
+
+
             /*(String login) {
        for(int i = 0; i<Utils.logins.length; i++){
             if (Utils.logins[i].equals(login)) return true;
         }
         return false;
-    }*/
+    }
+*/
+
+
 
 
     private boolean checkPassword(String password) {return password.equals(password); }
 
-    private boolean checkNumbers(String password) {
+
+
+
+  /*  private boolean checkNumbers(String password) {
         char[] array = password.toCharArray();
         for (char x : array) {
             if (Character.isDigit(x)) {
@@ -103,4 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         }
+        */
+
+
 }
