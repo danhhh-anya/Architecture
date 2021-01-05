@@ -12,6 +12,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/continue_press_button"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +26,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/button1"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="1" />
@@ -37,13 +38,13 @@
                 android:text="4" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/button7"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="7" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button10"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="*" />
@@ -57,13 +58,13 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/button2"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="2" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/button5"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="5" />
@@ -75,7 +76,7 @@
                 android:text="8" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/button11"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="0" />
@@ -88,25 +89,25 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/button3"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="3" />
 
             <Button
-                android:id="@+id/button11"
+                android:id="@+id/button6"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="6" />
 
             <Button
-                android:id="@+id/button12"
+                android:id="@+id/button9"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="9" />
 
             <Button
-                android:id="@+id/button13"
+                android:id="@+id/button12"
                 android:layout_width="@dimen/button_size"
                 android:layout_height="@dimen/button_size"
                 android:text="#" />
