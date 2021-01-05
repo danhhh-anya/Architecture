@@ -25,8 +25,28 @@ public class MainActivity extends AppCompatActivity {
         etLogin = findViewById(R.id.etLogin);
         etPassword = findViewById(R.id.etPassword);
 
-        userTypes.put("ENGINEER", users.get(2));
-        UserModel userEngineer = userTypes.get("ENGINEER");
+
+
+
+        /*  String[] array = String[20]
+
+            String s = "breath";
+
+            int position = array.length / 2;
+
+            String[] tmp1;
+            String[] tmp2;
+
+            String[] tmp3 = tmp1 + s + tmp2;
+
+            array = tmp3;
+        */
+
+
+
+
+    /*    userTypes.put("ENGINEER", users.get(2));
+        UserModel userEngineer = userTypes.get("ENGINEER");*/
 
         users = new Utils().getUsers();
 
