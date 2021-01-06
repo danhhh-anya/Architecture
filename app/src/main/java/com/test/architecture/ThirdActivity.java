@@ -56,6 +56,15 @@ public class ThirdActivity extends AppCompatActivity {
         Undo = findViewById(R.id.undoButton);
         Call = findViewById(R.id.callButton);
 
+
+        Undo.setOnClickListener (view -> {
+            if (number.getText().length() == 0) return; // если длина текста = 0, возвращаем
+            number.setText(number.getText().toString().substring(0, number.getText().length() - 1));
+            // substring создание стриги на основе той, которая уже есть
+            // по сути, вторая строка означает, что мы удаляем по 1 символу из данной строки с символами
+
+                });
+
         /*Button0.setOnClickListener (view -> {
             number.setText("0");
         });*/
