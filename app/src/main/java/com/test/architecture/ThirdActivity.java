@@ -1,13 +1,22 @@
 package com.test.architecture;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.widget.Button;
 import android.widget.EditText;
 
+import static android.net.Uri.parse;
+
 public class ThirdActivity extends AppCompatActivity {
+    private static final int REQUEST_PHONE_CALL = 22222;
     //Button btnStillContinue;
 
     Button Button0;
@@ -24,7 +33,7 @@ public class ThirdActivity extends AppCompatActivity {
     Button ButtonPoundSymbol;
     EditText number;
 
-    Editable symbolsOnTheScreen;
+    //Editable symbolsOnTheScreen;
 
     Button Undo;
     Button Call;
@@ -32,6 +41,7 @@ public class ThirdActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_third);
         /*btnStillContinue = findViewById(R.id.btnStillContinue);
         btnStillContinue.setOnClickListener(view ->{
@@ -57,6 +67,11 @@ public class ThirdActivity extends AppCompatActivity {
         Call = findViewById(R.id.callButton);
 
 
+
+
+        Call.setOnClickListener (view -> Call(number.getText().toString()));
+
+
         Undo.setOnClickListener (view -> {
             if (number.getText().length() == 0) return; // если длина текста = 0, возвращаем
             number.setText(number.getText().toString().substring(0, number.getText().length() - 1));
@@ -71,6 +86,9 @@ public class ThirdActivity extends AppCompatActivity {
 
 
         // number.setText(number.getText().append("0"));
+
+
+
 
 
         Button0.setOnClickListener (view -> {
@@ -194,7 +212,15 @@ public class ThirdActivity extends AppCompatActivity {
             number.setText(number.getText().append("#"));
         });
 
-
-
+    }
+    private void Call(String phone){
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+        }
+        else
+        {
+            startActivity(intent);
+        }
     }
 }

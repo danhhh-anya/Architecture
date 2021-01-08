@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etLogin;
     EditText etPassword;
     ArrayList<UserModel> users;
-    HashMap<String, UserModel> userTypes;
+ //   HashMap<String, UserModel> userTypes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
