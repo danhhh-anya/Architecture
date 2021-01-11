@@ -1,5 +1,6 @@
 package com.test.architecture;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,39 +10,32 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
 import android.widget.Button;
 import android.widget.EditText;
 
-import static android.net.Uri.parse;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+
 
 public class ThirdActivity extends AppCompatActivity {
     private static final int REQUEST_PHONE_CALL = 22222;
     //Button btnStillContinue;
 
-    Button Button0;
-    Button Button1;
-    Button Button2;
-    Button Button3;
-    Button Button4;
-    Button Button5;
-    Button Button6;
-    Button Button7;
-    Button Button8;
-    Button Button9;
-    Button ButtonStar;
-    Button ButtonPoundSymbol;
+    private Button Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol, Undo;
     EditText number;
 
-    //Editable symbolsOnTheScreen;
 
-    Button Undo;
+
+
     Button Call;
+
+    private ArrayList<Button> buttons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_third);
         /*btnStillContinue = findViewById(R.id.btnStillContinue);
         btnStillContinue.setOnClickListener(view ->{
@@ -66,10 +60,10 @@ public class ThirdActivity extends AppCompatActivity {
         Undo = findViewById(R.id.undoButton);
         Call = findViewById(R.id.callButton);
 
+        buttons = new ArrayList<>(Arrays.asList(Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol, Undo));
+        setClickListeners();
 
-
-
-        Call.setOnClickListener (view -> Call(number.getText().toString()));
+        Call.setOnClickListener(v -> call(number.getText().toString()));
 
 
         Undo.setOnClickListener (view -> {
@@ -88,138 +82,149 @@ public class ThirdActivity extends AppCompatActivity {
         // number.setText(number.getText().append("0"));
 
 
-
-
-
-        Button0.setOnClickListener (view -> {
-            /*if (number.getText().equals("")){ // если поле ввода пустое: "0"
+    /*    Button0.setOnClickListener (view -> {
+            if (number.getText().equals("")){ // если поле ввода пустое: "0"
                 number.setText("0");
             } else {                          // иначе: символы что уже введены на экране + "0"
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "0");
-            }*/
+            }
 
             number.setText(number.getText().append("0")); // или toString()+"0"
         });
 
         Button1.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("1");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "1");
-            }*/
+            }
             number.setText(number.getText().append("1"));
         });
 
         Button2.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("2");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "2");
-            }*/
+            }
             number.setText(number.getText().append("2"));
         });
 
         Button3.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("3");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "3");
-            }*/
+            }
             number.setText(number.getText().append("3"));
         });
 
         Button4.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("4");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "4");
-            }*/
+            }
             number.setText(number.getText().append("4"));
         });
 
         Button5.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("5");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "5");
-            }*/
+            }
             number.setText(number.getText().append("5"));
         });
 
         Button6.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+           if (number.getText().equals("")){
                 number.setText("6");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "6");
-            }*/
+            }
             number.setText(number.getText().append("6"));
         });
 
         Button7.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("7");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "7");
-            }*/
+            }
             number.setText(number.getText().append("7"));
         });
 
         Button8.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+           if (number.getText().equals("")){
                 number.setText("8");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "8");
-            }*/
+            }
             number.setText(number.getText().append("8"));
         });
 
         Button9.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("9");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "9");
-            }*/
+            }
             number.setText(number.getText().append("9"));
         });
 
         ButtonStar.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("*");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "*");
-            }*/
+            }
             number.setText(number.getText().append("*"));
         });
 
         ButtonPoundSymbol.setOnClickListener (view -> {
-        /*    if (number.getText().equals("")){
+            if (number.getText().equals("")){
                 number.setText("#");
             } else {
                 symbolsOnTheScreen = number.getText();
                 number.setText(symbolsOnTheScreen + "#");
-            }*/
+            }
             number.setText(number.getText().append("#"));
-        });
+        });*/
 
     }
-    private void Call(String phone){
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == REQUEST_PHONE_CALL){
+            call(number.getText().toString());
         }
-        else
-        {
+    }
+
+    private void setClickListeners() {
+        for (Button button : buttons) {
+            button.setOnClickListener(v -> number.setText(number.getText().append(button.getText().toString())));
+        }
+    }
+
+    private void call(String phone) {
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_PHONE_CALL);
+        } else {
             startActivity(intent);
         }
     }
