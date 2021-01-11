@@ -12,6 +12,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+
+import com.test.architecture.treads.SomeThing;
+import com.test.architecture.treads.SomeThread;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +27,8 @@ public class ThirdActivity extends AppCompatActivity {
     private Button Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol, Undo, Call;
     private EditText number;
     private ArrayList<Button> buttons;
-
+    private SomeThread thread1;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,10 @@ public class ThirdActivity extends AppCompatActivity {
 
         Undo = findViewById(R.id.undoButton);
         Call = findViewById(R.id.callButton);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setMax(100);
+
+
 
         buttons = new ArrayList<>(Arrays.asList(Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol));
         setClickListeners();
@@ -65,6 +74,7 @@ public class ThirdActivity extends AppCompatActivity {
             // по сути, вторая строка означает, что мы удаляем по 1 символу из данной строки с символами
 
                 });
+        setProgress();
 
         /*Button0.setOnClickListener (view -> {
             number.setText("0");
@@ -195,8 +205,40 @@ public class ThirdActivity extends AppCompatActivity {
             number.setText(number.getText().append("#"));
         });*/
 
+
+    }
+    private void setProgress(){
+         Thread thread = new Thread(() -> {
+        for (int i = 0; i<=100; i++){
+            progressBar.setProgress(i);
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    });
+        thread.setName("Progress Thread");
+        thread.start();
     }
 
+    private void startThreads(){
+        //1
+        thread1 = new SomeThread();
+        thread1.start();
+        //2
+        SomeThing someThing = new SomeThing();
+        Thread thread2 = new Thread(someThing);
+        thread2.start();
+
+        Thread thread3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Привет из потока SomeThing");
+            }
+        });
+        thread3.start();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
