@@ -16,22 +16,14 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-
-
 public class ThirdActivity extends AppCompatActivity {
     private static final int REQUEST_PHONE_CALL = 22222;
     //Button btnStillContinue;
 
-    private Button Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol, Undo;
-    EditText number;
-
-
-
-
-    Button Call;
-
+    private Button Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol, Undo, Call;
+    private EditText number;
     private ArrayList<Button> buttons;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +52,7 @@ public class ThirdActivity extends AppCompatActivity {
         Undo = findViewById(R.id.undoButton);
         Call = findViewById(R.id.callButton);
 
-        buttons = new ArrayList<>(Arrays.asList(Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol, Undo));
+        buttons = new ArrayList<>(Arrays.asList(Button0, Button1, Button2, Button3, Button4, Button5, Button6, Button7, Button8, Button9, ButtonStar, ButtonPoundSymbol));
         setClickListeners();
 
         Call.setOnClickListener(v -> call(number.getText().toString()));
